@@ -909,3 +909,237 @@ button {
 </style>
 </head>
 <body>
+<header class="header">
+
+<div class="logo">
+
+<div class="logo-icon">
+B
+</div>
+
+<div class="logo-title">
+Bingo <span>Studio</span>
+</div>
+
+</div>
+
+
+</header>
+
+
+
+<div class="container">
+
+
+<h1 class="title">
+Генератор Bingo карточек
+</h1>
+
+
+<p class="subtitle">
+Создавайте уникальные карточки для музыкального бинго
+</p>
+
+
+
+<div class="generator-layout">
+
+
+
+<!-- ЛЕВАЯ ПАНЕЛЬ -->
+
+<div class="panel">
+
+
+<h2>
+⚙ Настройки игры
+</h2>
+
+
+
+<div class="form-group">
+
+<label>
+Размер карточки
+</label>
+
+
+<select id="cardSize">
+
+<option value="3">
+3 × 3
+</option>
+
+<option value="4">
+4 × 4
+</option>
+
+<option value="5">
+5 × 5
+</option>
+
+
+</select>
+
+</div>
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Количество карточек
+</label>
+
+
+<input 
+id="cardCount"
+type="number"
+value="10"
+min="1"
+max="100"
+>
+
+
+</div>
+
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Список песен
+</label>
+
+
+<textarea 
+id="songInput"
+rows="12"
+placeholder="Введите песни по одной на строку">
+
+EMMA M — Чистые глаза
+Руки Вверх! — Алёшка
+Земляне — Трава у дома
+Король и Шут — Лесник
+Ленинград — Экспонат
+
+</textarea>
+
+
+</div>
+
+
+
+
+
+<button 
+class="btn btn-gold"
+onclick="generateCards()">
+
+✨ Создать карточки
+
+</button>
+
+
+
+<br><br>
+
+
+<button 
+class="btn btn-dark"
+onclick="window.print()">
+
+🖨 Печать карточек
+
+</button>
+
+
+
+
+<div class="song-list" id="songList">
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ПРАВАЯ ЧАСТЬ -->
+
+
+<div class="preview">
+
+
+<div class="preview-title">
+
+Предпросмотр
+
+</div>
+
+
+
+<div id="previewCard">
+
+
+<div class="bingo-card">
+
+
+<div class="card-header">
+
+<h1>
+BINGO
+</h1>
+
+<span>
+Music Edition
+</span>
+
+</div>
+
+
+
+<div class="bingo-grid grid-3"
+id="bingoGrid">
+
+
+<div class="bingo-cell">
+Нажмите создать
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="cards-container"
+id="cardsContainer">
+
+</div>
+
+
+
+</div>
