@@ -303,9 +303,8 @@ label {
 
 
 select,
-input {
-
-    width:100%;
+input,
+textarea {
 
     padding:14px;
 
@@ -1168,7 +1167,10 @@ document.addEventListener("DOMContentLoaded", function () {
         let selected = shuffle([...items]).slice(0, needed);
 
         let card = document.createElement("div");
-        card.className = "bingo-grid grid-" + size;
+card.className = "bingo-card";
+
+let grid = document.createElement("div");
+grid.className = "bingo-grid grid-" + size;
 
 
         selected.forEach(song => {
@@ -1181,11 +1183,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 <span>${song}</span>
             `;
 
-            card.appendChild(cell);
+            grid.appendChild(cell);
 
         });
 
-
+card.appendChild(grid);
         return card;
     }
 
