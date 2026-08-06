@@ -1,5 +1,914 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-...
+
+<meta charset="UTF-8">
+
+<title>Bingo Studio</title>
+
+</head>
 <style>
+
+<style>
+
+:root {
+    --bg-dark: #090909;
+    --bg-card: #111111;
+    --bg-panel: #161616;
+
+    --gold: #d4af37;
+    --gold-light: #f6d365;
+    --gold-dark: #9c7c19;
+
+    --white: #ffffff;
+    --gray: #9c9c9c;
+
+    --border: rgba(212,175,55,0.35);
+
+    --shadow:
+        0 20px 60px rgba(0,0,0,.55),
+        0 0 30px rgba(212,175,55,.08);
+
+    --radius: 18px;
+}
+
+
+/* ===============================
+   GLOBAL
+================================ */
+
+
+* {
+    box-sizing:border-box;
+}
+
+
+html {
+    scroll-behavior:smooth;
+}
+
+
+body {
+
+    margin:0;
+
+    min-height:100vh;
+
+    background:
+    radial-gradient(
+        circle at top,
+        rgba(212,175,55,.12),
+        transparent 40%
+    ),
+    var(--bg-dark);
+
+    color:white;
+
+    font-family:
+    Inter,
+    Montserrat,
+    Arial,
+    sans-serif;
+
+}
+
+
+button,
+input,
+select,
+textarea {
+
+    font-family:inherit;
+
+}
+
+
+
+/* ===============================
+ HEADER
+================================ */
+
+
+.header {
+
+    width:100%;
+
+    padding:30px 50px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:
+
+    linear-gradient(
+        180deg,
+        rgba(0,0,0,.95),
+        rgba(0,0,0,.7)
+    );
+
+    border-bottom:
+    1px solid var(--border);
+
+}
+
+
+.logo {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+
+.logo-icon {
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:26px;
+
+    font-weight:800;
+
+    color:#000;
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--gold-light),
+        var(--gold)
+    );
+
+    box-shadow:
+    0 0 30px rgba(212,175,55,.5);
+
+}
+
+
+.logo-title {
+
+    font-size:28px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+}
+
+
+.logo-title span {
+
+    color:var(--gold);
+
+}
+
+
+
+/* ===============================
+ MAIN CONTAINER
+================================ */
+
+
+.container {
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:40px 30px;
+
+}
+
+
+
+.title {
+
+    text-align:center;
+
+    font-size:42px;
+
+    font-weight:900;
+
+    margin-bottom:10px;
+
+}
+
+
+.subtitle {
+
+    text-align:center;
+
+    color:var(--gray);
+
+    margin-bottom:40px;
+
+    font-size:18px;
+
+}
+
+
+
+/* ===============================
+ LAYOUT
+================================ */
+
+
+.generator-layout {
+
+    display:grid;
+
+    grid-template-columns:
+
+    360px 1fr;
+
+    gap:35px;
+
+}
+
+
+
+/* ===============================
+ SETTINGS PANEL
+================================ */
+
+
+.panel {
+
+    background:
+
+    linear-gradient(
+        145deg,
+        #181818,
+        #0d0d0d
+    );
+
+    border:
+
+    1px solid var(--border);
+
+    border-radius:
+
+    var(--radius);
+
+    padding:30px;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+.panel h2 {
+
+    margin-top:0;
+
+    color:var(--gold);
+
+    font-size:22px;
+
+}
+
+
+
+.form-group {
+
+    margin-bottom:25px;
+
+}
+
+
+label {
+
+    display:block;
+
+    margin-bottom:10px;
+
+    color:#ddd;
+
+    font-size:14px;
+
+}
+
+
+
+select,
+input {
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+    background:#080808;
+
+    color:white;
+
+    outline:none;
+
+}
+
+
+
+select:focus,
+input:focus {
+
+    border-color:var(--gold);
+
+}
+
+
+
+/* ===============================
+ BUTTONS
+================================ */
+
+
+.btn {
+
+    width:100%;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    border:none;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+
+
+.btn-gold {
+
+    background:
+
+    linear-gradient(
+        135deg,
+        var(--gold-light),
+        var(--gold)
+    );
+
+    color:#111;
+
+}
+
+
+.btn-gold:hover {
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 10px 30px
+    rgba(212,175,55,.35);
+
+}
+
+
+
+.btn-dark {
+
+    background:#222;
+
+    color:white;
+
+    border:
+
+    1px solid var(--border);
+
+}
+
+
+.btn-dark:hover {
+
+    background:#333;
+
+}
+
+
+
+/* ===============================
+ SONG LIST
+================================ */
+
+
+.song-list {
+
+    margin-top:25px;
+
+    max-height:450px;
+
+    overflow:auto;
+
+}
+
+
+
+.song-item {
+
+    padding:12px;
+
+    margin-bottom:8px;
+
+    background:#0c0c0c;
+
+    border-radius:10px;
+
+    border:
+
+    1px solid rgba(255,255,255,.08);
+
+    display:flex;
+
+    gap:10px;
+
+    align-items:center;
+
+}
+
+
+
+.song-number {
+
+    width:30px;
+
+    height:30px;
+
+    border-radius:50%;
+
+    background:var(--gold);
+
+    color:#000;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-weight:700;
+
+}
+
+
+
+/* ===============================
+ PREVIEW AREA
+================================ */
+
+
+.preview {
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+
+.preview-title {
+
+    font-size:24px;
+
+    color:var(--gold);
+
+    margin-bottom:25px;
+
+}
+
+
+
+/* ===============================
+ BINGO CARD
+================================ */
+
+
+.bingo-card {
+
+
+    width:min(650px,100%);
+
+
+    background:white;
+
+
+    color:#111;
+
+
+    padding:25px;
+
+
+    border-radius:20px;
+
+
+    box-shadow:
+
+    0 20px 70px rgba(0,0,0,.5);
+
+
+
+}
+
+
+
+.card-header {
+
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.card-header h1 {
+
+
+    margin:0;
+
+
+    font-size:32px;
+
+
+    letter-spacing:4px;
+
+
+    color:#111;
+
+
+}
+
+
+
+.card-header span {
+
+
+    color:#b08a20;
+
+
+}
+
+
+
+.bingo-grid {
+
+
+    display:grid;
+
+
+    gap:10px;
+
+
+}
+
+
+
+.grid-3 {
+
+
+    grid-template-columns:repeat(3,1fr);
+
+}
+
+
+
+.grid-4 {
+
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
+
+
+.grid-5 {
+
+
+    grid-template-columns:repeat(5,1fr);
+
+}
+
+
+
+.bingo-cell {
+
+
+    aspect-ratio:1;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    text-align:center;
+
+
+    padding:10px;
+
+
+    border:
+
+    2px solid #111;
+
+
+    font-size:15px;
+
+
+    font-weight:700;
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #fff,
+        #f4f4f4
+    );
+
+
+}
+
+
+
+.bingo-cell:hover {
+
+
+    background:#f7e6a8;
+
+
+}
+
+
+
+/* ===============================
+ DECORATIONS
+================================ */
+
+
+.gold-line {
+
+
+    height:2px;
+
+
+    width:100%;
+
+
+    background:
+
+    linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        transparent
+    );
+
+
+    margin:25px 0;
+
+
+}
+
+
+
+/* ===============================
+ CARDS LIST
+================================ */
+
+
+.cards-container {
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(auto-fit,minmax(320px,1fr));
+
+
+    gap:25px;
+
+
+    margin-top:40px;
+
+
+}
+
+
+
+.card-mini {
+
+
+    background:white;
+
+
+    padding:20px;
+
+
+    border-radius:15px;
+
+
+    color:#111;
+
+
+    box-shadow:
+
+    0 15px 40px rgba(0,0,0,.3);
+
+
+}
+
+
+
+/* ===============================
+ PRINT
+================================ */
+
+
+@media print {
+
+
+body {
+
+    background:white;
+
+}
+
+
+
+.header,
+.panel,
+.subtitle,
+button {
+
+    display:none!important;
+
+}
+
+
+
+.container {
+
+    padding:0;
+
+}
+
+
+
+.bingo-card {
+
+
+    box-shadow:none;
+
+
+    page-break-inside:avoid;
+
+
+}
+
+
+
+}
+
+
+
+/* ===============================
+ RESPONSIVE
+================================ */
+
+
+@media(max-width:1000px){
+
+
+.generator-layout {
+
+
+    grid-template-columns:1fr;
+
+
+}
+
+
+
+.title {
+
+
+    font-size:32px;
+
+
+}
+
+
+
+.header {
+
+
+    padding:20px;
+
+
+}
+
+
+
+}
+
+
+
+@media(max-width:600px){
+
+
+.container {
+
+
+    padding:20px 15px;
+
+
+}
+
+
+
+.title {
+
+
+    font-size:26px;
+
+
+}
+
+
+
+.bingo-card {
+
+
+    padding:15px;
+
+
+}
+
+
+
+.bingo-cell {
+
+
+    font-size:11px;
+
+
+    padding:5px;
+
+
+}
+
+
+
+.logo-title {
+
+
+    font-size:20px;
+
+
+}
+
+
+
+}
+
+
+
+</style>
+
+</style>
