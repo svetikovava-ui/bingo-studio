@@ -456,19 +456,19 @@ PRINT
 
 @page {
 
-    size: A4;
+size:A4;
 
-    margin: 10mm;
+margin:10mm;
 
 }
 
 
 
-body {
+body{
 
-    background:white;
+background:white;
 
-    color:black;
+color:black;
 
 }
 
@@ -476,145 +476,180 @@ body {
 
 .header,
 .settings-panel,
-.preview-panel h2 {
+.preview-panel h2{
 
-    display:none!important;
-
-}
-
-
-
-.generator-container {
-
-    display:block;
-
-    padding:0;
-
-    margin:0;
+display:none!important;
 
 }
 
 
 
-.preview-panel {
+.generator-container{
 
-    border:none;
+display:block;
 
-    padding:0;
+padding:0;
 
-    box-shadow:none;
-
-}
-
-
-
-.cards-preview {
-
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(2, 1fr);
-
-
-    gap:8mm;
-
+margin:0;
 
 }
 
 
 
-.print-card {
+.preview-panel{
+
+border:none;
+
+padding:0;
+
+box-shadow:none;
+
+}
 
 
-    width:100%;
+
+.cards-preview{
 
 
-    height:auto;
+display:grid;
 
-
-    padding:8px;
-
-
-    border-radius:0;
-
-
-    box-shadow:none;
-
-
-    page-break-inside:avoid;
+gap:10mm;
 
 
 }
 
 
 
-.card-title {
+/* ===============================
+A4 - 1 CARD
+================================ */
 
 
-    font-size:14px;
+.cards-preview:has(.one){
+
+grid-template-columns:
+1fr;
+
+}
 
 
-    margin-bottom:6px;
+
+.print-card.one{
+
+width:100%;
+
+min-height:270mm;
+
+}
+
+
+
+/* ===============================
+A4 - 2 CARDS
+================================ */
+
+
+.cards-preview:has(.two){
+
+grid-template-columns:
+1fr;
+
+}
+
+
+
+.print-card.two{
+
+height:130mm;
+
+}
+
+
+
+/* ===============================
+A4 - 4 CARDS
+================================ */
+
+
+.cards-preview:has(.four){
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:8mm;
+
+}
+
+
+
+.print-card.four{
+
+
+height:125mm;
 
 
 }
 
 
 
-.bingo-card {
+/* CARD STYLE */
 
 
-    width:100%;
+.print-card{
 
 
-}
+padding:8px;
 
+border-radius:0;
 
+box-shadow:none;
 
-.bingo-grid {
-
-
-    gap:3px;
-
+page-break-inside:avoid;
 
 }
 
 
 
-.bingo-cell {
+.card-title{
 
+font-size:14px;
 
-    padding:4px;
-
-
-    border:1px solid #000;
-
+margin-bottom:5px;
 
 }
 
 
 
-.cell-number {
+.bingo-grid{
 
-
-    font-size:8px;
-
+gap:3px;
 
 }
 
 
 
-.song-title {
+.bingo-cell{
 
-
-    font-size:10px;
-
-
-    line-height:1.1;
-
+padding:3px;
 
 }
+
+
+
+.cell-number{
+
+font-size:8px;
+
+}
+
+
+
+.song-title{
+
+font-size:10px;
+
+}
+
 
 
 }
