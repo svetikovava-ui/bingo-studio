@@ -1,50 +1,38 @@
 console.log("BINGO SCRIPT LOADED");
 
-
 document.addEventListener("DOMContentLoaded", () => {
 
-
 console.log("DOM READY");
-
 
 
 /* ===============================
    ELEMENTS
 ================================ */
 
-
 const generateBtn =
-document.getElementById("generateBtn");
-
+document.getElementById("createCards");
 
 const bingoGrid =
 document.getElementById("bingoGrid");
 
+const itemsInput =
+document.getElementById("itemsList");
 
-const songsInput =
-document.getElementById("songInput");
-
-
-const cardSize =
-document.getElementById("cardSize");
-
+const gridSize =
+document.getElementById("gridSize");
 
 const cardCount =
 document.getElementById("cardCount");
 
-
-const printFormat =
-document.getElementById("printFormat");
-
+const gameTitle =
+document.getElementById("gameTitle");
 
 
 /* ===============================
    SETTINGS
 ================================ */
 
-
 const MAX_CARDS = 200;
-
 
 let generatedCards = new Set();
 
@@ -54,11 +42,9 @@ let generatedCards = new Set();
    SHUFFLE
 ================================ */
 
-
 function shuffle(array){
 
     let result = [...array];
-
 
     for(let i = result.length - 1; i > 0; i--){
 
@@ -66,7 +52,6 @@ function shuffle(array){
         Math.floor(
             Math.random() * (i + 1)
         );
-
 
         [
             result[i],
@@ -79,7 +64,6 @@ function shuffle(array){
 
     }
 
-
     return result;
 
 }
@@ -87,9 +71,8 @@ function shuffle(array){
 
 
 /* ===============================
-   CARD UNIQUE KEY
+   UNIQUE KEY
 ================================ */
-
 
 function cardKey(items){
 
@@ -105,9 +88,7 @@ function cardKey(items){
    GENERATE ITEMS
 ================================ */
 
-
 function generateCardItems(items,size){
-
 
     let needed =
     size * size;
@@ -116,14 +97,11 @@ function generateCardItems(items,size){
     let attempts = 0;
 
 
-
     while(attempts < 1000){
-
 
         let selected =
         shuffle(items)
-        .slice(0,needed);
-
+        .slice(0, needed);
 
 
         let key =
@@ -133,9 +111,7 @@ function generateCardItems(items,size){
 
         if(!generatedCards.has(key)){
 
-
             generatedCards.add(key);
-
 
             return selected;
 
@@ -147,58 +123,48 @@ function generateCardItems(items,size){
     }
 
 
-
     return shuffle(items)
-    .slice(0,needed);
-
+    .slice(0, needed);
 
 }
 
 
 
-
 /* ===============================
-   CREATE CARD HTML
+   CREATE CARD
 ================================ */
 
-
-function createCard(
-items,
-size,
-number,
-format
-){
+function createCard(items,size,number){
 
 
     let wrapper =
     document.createElement("div");
 
-
-
     wrapper.className =
-    `print-card ${format}`;
+    "print-card";
 
 
 
     let title =
     document.createElement("h3");
 
-
-
     title.className =
     "card-title";
 
 
+    let name =
+    gameTitle && gameTitle.value
+    ? gameTitle.value
+    : "BINGO";
+
 
     title.textContent =
-    `BINGO № ${number}`;
-
+    `${name} № ${number}`;
 
 
 
     let card =
     document.createElement("div");
-
 
     card.className =
     "bingo-card";
@@ -208,20 +174,16 @@ format
     let grid =
     document.createElement("div");
 
-
-
     grid.className =
     `bingo-grid grid-${size}`;
 
 
 
-
-    items.forEach((song,index)=>{
+    items.forEach((item,index)=>{
 
 
         let cell =
         document.createElement("div");
-
 
 
         cell.className =
@@ -232,15 +194,14 @@ format
         cell.innerHTML = `
 
             <div class="cell-number">
-                ${String(index+1).padStart(2,"0")}
+                ${String(index + 1).padStart(2,"0")}
             </div>
 
             <div class="song-title">
-                ${song}
+                ${item}
             </div>
 
         `;
-
 
 
         grid.appendChild(cell);
@@ -252,9 +213,7 @@ format
 
     card.appendChild(grid);
 
-
     wrapper.appendChild(title);
-
 
     wrapper.appendChild(card);
 
@@ -262,10 +221,7 @@ format
 
     return wrapper;
 
-
 }
-
-
 
 
 
@@ -273,12 +229,10 @@ format
    CREATE ALL CARDS
 ================================ */
 
-
 function createCards(){
 
 
 console.log("CREATE START");
-
 
 
 bingoGrid.innerHTML = "";
@@ -288,44 +242,33 @@ generatedCards.clear();
 
 
 
-let songs =
-songsInput.value
+let items =
+itemsInput.value
 .split("\n")
-.map(song => song.trim())
-.filter(song => song);
+.map(item => item.trim())
+.filter(item => item);
 
 
 
-if(!songs.length){
-
+if(!items.length){
 
 alert(
-"Добавьте список песен"
+"Добавьте список элементов"
 );
 
-
 return;
-
 
 }
 
 
 
-
 let size =
-Number(cardSize.value);
+Number(gridSize.value);
 
 
 
 let count =
 Number(cardCount.value);
-
-
-
-let format =
-printFormat ?
-printFormat.value :
-"A5";
 
 
 
@@ -336,30 +279,23 @@ size * size;
 
 if(count > MAX_CARDS){
 
-
 alert(
 `Максимум ${MAX_CARDS} карточек`
 );
 
-
 return;
-
 
 }
 
 
 
-
-if(songs.length < needed){
-
+if(items.length < needed){
 
 alert(
-`Для карточки ${size}×${size} нужно минимум ${needed} песен`
+`Для карточки ${size}×${size} нужно минимум ${needed} элементов`
 );
 
-
 return;
-
 
 }
 
@@ -373,9 +309,9 @@ i++
 ){
 
 
-let items =
+let cardItems =
 generateCardItems(
-songs,
+items,
 size
 );
 
@@ -383,10 +319,9 @@ size
 
 let card =
 createCard(
-items,
+cardItems,
 size,
-i,
-format
+i
 );
 
 
@@ -400,10 +335,7 @@ bingoGrid.appendChild(card);
 
 console.log("CARDS CREATED");
 
-
 }
-
-
 
 
 
@@ -411,25 +343,9 @@ console.log("CARDS CREATED");
    PRINT
 ================================ */
 
-
 function printCards(){
 
 window.print();
-
-}
-
-
-
-/* ===============================
-   PDF
-================================ */
-
-
-function preparePDF(){
-
-alert(
-"PDF экспорт будет подключён следующим этапом"
-);
 
 }
 
@@ -451,34 +367,7 @@ createCards
 
 
 
-const printBtn =
-document.getElementById("printBtn");
-
-
-if(printBtn){
-
-printBtn.addEventListener(
-"click",
-printCards
-);
-
-}
-
-
-
-const pdfBtn =
-document.getElementById("pdfBtn");
-
-
-if(pdfBtn){
-
-pdfBtn.addEventListener(
-"click",
-preparePDF
-);
-
-}
-
+console.log("BINGO READY");
 
 
 });
