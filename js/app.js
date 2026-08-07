@@ -1,8 +1,7 @@
+document
+.getElementById("generateBtn")
+.addEventListener("click", function(){
 
-function startGenerator(){
+    window.location.href = "generator.html";
 
-alert(
-"Генератор карточек скоро будет доступен 🎵"
-);
-
-}
+});
