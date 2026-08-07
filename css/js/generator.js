@@ -1,5 +1,3 @@
-<script>
-
 document.addEventListener("DOMContentLoaded", function () {
 
     const generateBtn = document.getElementById("generateBtn");
@@ -22,10 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
         let selected = shuffle([...items]).slice(0, needed);
 
         let card = document.createElement("div");
-card.className = "bingo-card";
+        card.className = "bingo-card";
 
-let grid = document.createElement("div");
-grid.className = "bingo-grid grid-" + size;
+        let grid = document.createElement("div");
+        grid.className = "bingo-grid grid-" + size;
 
 
         selected.forEach(song => {
@@ -42,23 +40,20 @@ grid.className = "bingo-grid grid-" + size;
 
         });
 
-card.appendChild(grid);
+        card.appendChild(grid);
+
         return card;
     }
 
 
-
     function createCards() {
 
-
         cardsContainer.innerHTML = "";
-
 
         let songs = songsInput.value
             .split("\n")
             .map(item => item.trim())
             .filter(item => item.length > 0);
-
 
 
         if (songs.length === 0) {
@@ -69,18 +64,15 @@ card.appendChild(grid);
         }
 
 
-
         let size = Number(cardSize.value);
-
         let count = Number(cardCount.value);
-
 
 
         if (songs.length < size * size) {
 
             alert(
-                "Для выбранного размера нужно минимум " 
-                + (size * size) 
+                "Для выбранного размера нужно минимум "
+                + (size * size)
                 + " элементов"
             );
 
@@ -88,9 +80,7 @@ card.appendChild(grid);
         }
 
 
-
         for(let i = 0; i < count; i++) {
-
 
             let wrapper = document.createElement("div");
 
@@ -100,7 +90,6 @@ card.appendChild(grid);
             let title = document.createElement("h3");
 
             title.innerText = "Карточка № " + (i+1);
-
 
 
             let card = generateCard(
@@ -121,14 +110,9 @@ card.appendChild(grid);
     }
 
 
-
     generateBtn.addEventListener(
         "click",
         createCards
     );
 
-
-
 });
-
-</script>  
