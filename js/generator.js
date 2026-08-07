@@ -1,20 +1,40 @@
 console.log("BINGO SCRIPT LOADED");
 
+
 document.addEventListener("DOMContentLoaded", () => {
 
+
 console.log("DOM READY");
+
 
 
 /* ===============================
    ELEMENTS
 ================================ */
 
-const generateBtn = document.getElementById("generateBtn");
-const cardsContainer = document.getElementById("cardsContainer");
 
-const songsInput = document.getElementById("songInput");
-const cardSize = document.getElementById("cardSize");
-const cardCount = document.getElementById("cardCount");
+const generateBtn =
+document.getElementById("generateBtn");
+
+
+const cardsContainer =
+document.getElementById("cardsContainer");
+
+
+const songsInput =
+document.getElementById("songInput");
+
+
+const cardSize =
+document.getElementById("cardSize");
+
+
+const cardCount =
+document.getElementById("cardCount");
+
+
+const printFormat =
+document.getElementById("printFormat");
 
 
 
@@ -22,9 +42,12 @@ const cardCount = document.getElementById("cardCount");
    SETTINGS
 ================================ */
 
+
 const MAX_CARDS = 200;
 
+
 let generatedCards = new Set();
+
 
 
 
@@ -32,15 +55,19 @@ let generatedCards = new Set();
    SHUFFLE
 ================================ */
 
+
 function shuffle(array){
 
     let result = [...array];
 
+
     for(let i = result.length - 1; i > 0; i--){
 
-        let random = Math.floor(
+        let random =
+        Math.floor(
             Math.random() * (i + 1)
         );
+
 
         [
             result[i],
@@ -53,9 +80,11 @@ function shuffle(array){
 
     }
 
+
     return result;
 
 }
+
 
 
 
@@ -63,9 +92,10 @@ function shuffle(array){
    CREATE UNIQUE CARD KEY
 ================================ */
 
+
 function cardKey(items){
 
-    return items
+    return [...items]
         .sort()
         .join("|");
 
@@ -73,45 +103,63 @@ function cardKey(items){
 
 
 
+
 /* ===============================
    GENERATE CARD DATA
 ================================ */
 
+
 function generateCardItems(items,size){
 
 
-    let needed = size * size;
+    let needed =
+    size * size;
+
 
     let attempts = 0;
 
 
+
     while(attempts < 1000){
 
-        let selected = shuffle(items)
-            .slice(0,needed);
+
+        let selected =
+        shuffle(items)
+        .slice(0,needed);
 
 
-        let key = cardKey(selected);
+
+        let key =
+        cardKey(selected);
+
 
 
         if(!generatedCards.has(key)){
 
+
             generatedCards.add(key);
 
+
             return selected;
+
 
         }
 
 
         attempts++;
 
+
     }
 
 
+
     return shuffle(items)
-        .slice(0,needed);
+    .slice(0,needed);
+
 
 }
+
+
 
 
 
@@ -119,42 +167,58 @@ function generateCardItems(items,size){
    CREATE HTML CARD
 ================================ */
 
-function createCard(items,size,number){
+
+function createCard(
+    items,
+    size,
+    number,
+    format
+){
+
 
 
     let wrapper =
-        document.createElement("div");
+    document.createElement("div");
 
 
     wrapper.className =
-        "card-mini";
+    `print-card ${format} page-break`;
+
 
 
 
     let title =
-        document.createElement("h3");
+    document.createElement("h3");
+
+
+    title.className =
+    "card-title";
 
 
     title.textContent =
-        `Карточка № ${number}`;
+    `BINGO № ${number}`;
 
 
 
     let card =
-        document.createElement("div");
+    document.createElement("div");
 
 
     card.className =
-        "bingo-card";
+    "bingo-card";
+
 
 
 
     let grid =
-        document.createElement("div");
+    document.createElement("div");
+
 
 
     grid.className =
-        `bingo-grid grid-${size}`;
+    `bingo-grid grid-${size}`;
+
+
 
 
 
@@ -162,25 +226,34 @@ function createCard(items,size,number){
 
 
         let cell =
-            document.createElement("div");
+        document.createElement("div");
+
 
 
         cell.className =
-            "bingo-cell";
+        "bingo-cell";
 
 
 
         cell.innerHTML = `
 
+
             <div class="cell-number">
+
                 ${String(index+1).padStart(2,"0")}
+
             </div>
 
-            <span>
+
+            <div class="song-title">
+
                 ${song}
-            </span>
+
+            </div>
+
 
         `;
+
 
 
         grid.appendChild(cell);
@@ -190,10 +263,14 @@ function createCard(items,size,number){
 
 
 
+
     card.appendChild(grid);
 
 
+
     wrapper.appendChild(title);
+
+
 
     wrapper.appendChild(card);
 
@@ -201,7 +278,11 @@ function createCard(items,size,number){
 
     return wrapper;
 
+
+
 }
+
+
 
 
 
@@ -213,112 +294,156 @@ function createCard(items,size,number){
 
 function createCards(){
 
-    console.log("1. CREATE START");
 
-    cardsContainer.innerHTML = "";
 
-    console.log("2. CONTAINER OK");
-
-    generatedCards.clear();
-
-    console.log("3. SET CLEAR OK");
+console.log("CREATE START");
 
 
 
-    let songs =
-        songsInput.value
-        .split("\n")
-        .map(song=>song.trim())
-        .filter(song=>song);
+cardsContainer.innerHTML = "";
 
 
 
-    if(!songs.length){
-
-        alert(
-            "Добавьте список песен"
-        );
-
-        return;
-
-    }
-
-
-
-    let size =
-        Number(cardSize.value);
-
-
-
-    let count =
-        Number(cardCount.value);
-
-
-
-    let needed =
-        size * size;
-
-
-
-    if(count > MAX_CARDS){
-
-        alert(
-            `Максимум ${MAX_CARDS} карточек`
-        );
-
-        return;
-
-    }
-
-
-
-    if(songs.length < needed){
-
-
-        alert(
-            `Для карточки ${size}×${size} нужно минимум ${needed} песен`
-        );
-
-
-        return;
-
-    }
+generatedCards.clear();
 
 
 
 
-    for(
-        let i = 1;
-        i <= count;
-        i++
-    ){
 
-
-        let items =
-            generateCardItems(
-                songs,
-                size
-            );
+let songs =
+songsInput.value
+.split("\n")
+.map(song => song.trim())
+.filter(song => song);
 
 
 
-        let card =
-            createCard(
-                items,
-                size,
-                i
-            );
+
+if(!songs.length){
+
+
+    alert(
+        "Добавьте список песен"
+    );
+
+
+    return;
+
+
+}
 
 
 
-        cardsContainer.appendChild(card);
 
 
-    }
+
+let size =
+Number(cardSize.value);
+
+
+
+let count =
+Number(cardCount.value);
+
+
+
+let format =
+printFormat ?
+printFormat.value :
+"A5";
+
+
+
+
+
+let needed =
+size * size;
+
+
+
+
+
+if(count > MAX_CARDS){
+
+
+    alert(
+        `Максимум ${MAX_CARDS} карточек`
+    );
+
+
+    return;
+
+
+}
+
+
+
+
+
+
+if(songs.length < needed){
+
+
+    alert(
+        `Для карточки ${size}×${size} нужно минимум ${needed} песен`
+    );
+
+
+    return;
+
+
+}
+
+
+
+
+
+
+
+for(
+    let i = 1;
+    i <= count;
+    i++
+){
+
+
+
+    let items =
+    generateCardItems(
+        songs,
+        size
+    );
+
+
+
+
+    let card =
+    createCard(
+        items,
+        size,
+        i,
+        format
+    );
+
+
+
+    cardsContainer.appendChild(card);
 
 
 
 }
+
+
+
+console.log("CARDS CREATED");
+
+
+
+}
+
+
+
+
 
 
 
@@ -329,9 +454,13 @@ function createCards(){
 
 function printCards(){
 
+
     window.print();
 
+
 }
+
+
 
 
 
@@ -353,45 +482,61 @@ function preparePDF(){
 
 
 
+
+
+
 /* ===============================
    EVENTS
 ================================ */
 
 
+
 generateBtn.addEventListener(
-    "click",
-    createCards
+"click",
+createCards
 );
 
 
 
+
+
+
 const printBtn =
-    document.getElementById("printBtn");
+document.getElementById("printBtn");
+
 
 
 if(printBtn){
+
 
     printBtn.addEventListener(
         "click",
         printCards
     );
 
+
 }
 
 
 
+
+
 const pdfBtn =
-    document.getElementById("pdfBtn");
+document.getElementById("pdfBtn");
+
 
 
 if(pdfBtn){
+
 
     pdfBtn.addEventListener(
         "click",
         preparePDF
     );
 
+
 }
+
 
 
 
