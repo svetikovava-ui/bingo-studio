@@ -562,7 +562,6 @@ font-weight:900;
 GENERATED CARDS
 ================================ */
 
-
 .cards-container{
 
 display:grid;
@@ -579,8 +578,9 @@ margin-top:50px;
 }
 
 
+/* PRINT CARD */
 
-.card-mini{
+.print-card{
 
 background:white;
 
@@ -595,11 +595,13 @@ box-shadow:
 
 break-inside:avoid;
 
+page-break-inside:avoid;
+
 }
 
 
 
-.card-mini h3{
+.card-title{
 
 text-align:center;
 
@@ -607,19 +609,21 @@ margin:0 0 10px;
 
 font-size:18px;
 
+font-weight:800;
+
 color:#9c7c19;
 
 }
 
 
 
-/* generated card */
+/* CARD */
 
-.card-mini .bingo-card{
+.print-card .bingo-card{
 
 width:100%;
 
-aspect-ratio:1/1;
+aspect-ratio:1 / 1;
 
 padding:8px;
 
@@ -633,10 +637,9 @@ box-shadow:none;
 
 
 
-/* generated grid */
+/* GRID */
 
-
-.card-mini .bingo-grid{
+.print-card .bingo-grid{
 
 width:100%;
 
@@ -648,10 +651,9 @@ gap:5px;
 
 
 
-/* generated cells */
+/* CELLS */
 
-
-.card-mini .bingo-cell{
+.print-card .bingo-cell{
 
 font-size:12px;
 
@@ -662,22 +664,54 @@ border:1px solid #222;
 }
 
 
-.card-mini .bingo-cell span{
+
+/* SONG TITLE */
+
+.song-title{
 
 font-size:11px;
 
-line-height:1.1;
+line-height:1.15;
 
 overflow-wrap:break-word;
 
 word-break:break-word;
 
+font-weight:700;
+
+text-align:center;
+
 }
 
 
 
+
 /* ===============================
-PRINT A4
+FORMAT SETTINGS
+================================ */
+
+
+/* A5 CARD */
+
+.print-card.A5{
+
+max-width:420px;
+
+}
+
+
+
+/* A4 CARD */
+
+.print-card.A4{
+
+max-width:800px;
+
+}
+
+
+/* ===============================
+PRINT
 ================================ */
 
 
@@ -727,20 +761,26 @@ padding:0;
 
 .cards-container{
 
+
 display:grid;
+
 
 grid-template-columns:
 repeat(2,1fr);
 
+
 gap:10mm;
 
+
 margin:0;
+
 
 }
 
 
 
-.card-mini{
+.print-card{
+
 
 width:100%;
 
@@ -750,41 +790,59 @@ border-radius:0;
 
 box-shadow:none;
 
+
 page-break-inside:avoid;
 
 break-inside:avoid;
+
 
 }
 
 
 
-.card-mini h3{
+.card-title{
+
 
 font-size:12px;
 
 margin-bottom:5px;
 
+
 }
 
 
 
-.card-mini .bingo-card{
+.print-card .bingo-card{
+
 
 padding:5px;
 
 border:1px solid #000;
 
+
 }
 
 
 
-.card-mini .bingo-cell{
+.print-card .bingo-cell{
+
 
 font-size:9px;
 
 padding:3px;
 
 border:1px solid #000;
+
+
+}
+
+
+
+.song-title{
+
+font-size:9px;
+
+line-height:1.1;
 
 }
 
