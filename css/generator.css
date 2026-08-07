@@ -452,6 +452,17 @@ input:focus {
 
 
 
+.song-item:hover {
+
+    border-color:var(--gold);
+
+    transform:translateX(5px);
+
+    transition:.3s;
+
+}
+
+
 .song-number {
 
     width:30px;
@@ -474,6 +485,19 @@ input:focus {
 
 }
 
+
+.song-item.active {
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(212,175,55,.25),
+        #111
+    );
+
+    border-color:var(--gold);
+
+}
 
 
 /* ===============================
@@ -805,11 +829,9 @@ input:focus {
     }
 
 
-    .header,
-    .panel,
-    .btn {
-        display:none;
-    }
+    .no-print {
+    display:none;
+}
 
 
     .bingo-card {
