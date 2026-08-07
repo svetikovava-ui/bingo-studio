@@ -21,6 +21,9 @@ document.getElementById("itemsList");
 const gridSize =
 document.getElementById("gridSize");
 
+const printFormat =
+document.getElementById("printFormat");   
+
 const cardCount =
 document.getElementById("cardCount");
 
@@ -141,7 +144,7 @@ function createCard(items,size,number){
     document.createElement("div");
 
     wrapper.className =
-    "print-card";
+    `print-card ${printFormat.value}`;
 
 
 
