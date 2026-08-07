@@ -1,407 +1,243 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<title>Bingo Studio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Bingo Studio</title>
 
+    <link rel="stylesheet" href="style.css">
 
-
-/* ===============================
- PRINT
-================================ */
-
-
-@media print {
-
-
-body {
-
-    background:white;
-
-}
-
-
-
-.header,
-.panel,
-.subtitle,
-button {
-
-    display:none!important;
-
-}
-
-
-
-.container {
-
-    padding:0;
-
-}
-
-
-
-.bingo-card {
-
-
-    box-shadow:none;
-
-
-    page-break-inside:avoid;
-
-
-}
-
-
-
-}
-
-
-
-/* ===============================
- RESPONSIVE
-================================ */
-
-
-@media(max-width:1000px){
-
-
-.generator-layout {
-
-
-    grid-template-columns:1fr;
-
-
-}
-
-
-
-.title {
-
-
-    font-size:32px;
-
-
-}
-
-
-
-.header {
-
-
-    padding:20px;
-
-
-}
-
-
-
-}
-
-
-
-@media(max-width:600px){
-
-
-.container {
-
-
-    padding:20px 15px;
-
-
-}
-
-
-
-.title {
-
-
-    font-size:26px;
-
-
-}
-
-
-
-.bingo-card {
-
-
-    padding:15px;
-
-
-}
-
-
-
-.bingo-cell {
-
-
-    font-size:11px;
-
-
-    padding:5px;
-
-
-}
-
-
-
-.logo-title {
-
-
-    font-size:20px;
-
-
-}
-
-
-
-}
-
-
-
-</style>
 </head>
+
 <body>
-<header class="header">
 
-<div class="logo">
+    <!-- ===============================
+         HEADER
+    ================================ -->
 
-<div class="logo-icon">
-B
-</div>
+    <header class="header">
 
-<div class="logo-title">
-Bingo <span>Studio</span>
-</div>
+        <div class="logo">
 
-</div>
+            <div class="logo-icon">
+                B
+            </div>
 
+            <div class="logo-title">
+                Bingo <span>Studio</span>
+            </div>
 
-</header>
+        </div>
 
-
-
-<div class="container">
-
-
-<h1 class="title">
-Генератор Bingo карточек
-</h1>
+    </header>
 
 
-<p class="subtitle">
-Создавайте уникальные карточки для музыкального бинго
-</p>
+    <!-- ===============================
+         MAIN
+    ================================ -->
+
+    <main class="container">
+
+        <h1 class="title">
+            Генератор Bingo карточек
+        </h1>
+
+        <p class="subtitle">
+            Создавайте уникальные карточки для музыкального бинго
+        </p>
 
 
+        <!-- ===============================
+             GENERATOR LAYOUT
+        ================================ -->
 
-<div class="generator-layout">
-
-
-
-<!-- ЛЕВАЯ ПАНЕЛЬ -->
-
-<div class="panel">
+        <div class="generator-layout">
 
 
-<h2>
-⚙ Настройки игры
-</h2>
+            <!-- ===============================
+                 LEFT PANEL
+            ================================ -->
+
+            <div class="panel">
+
+                <h2>
+                    ⚙ Настройки игры
+                </h2>
 
 
+                <!-- Размер карточки -->
 
-<div class="form-group">
+                <div class="form-group">
 
-<label>
-Размер карточки
-</label>
+                    <label for="cardSize">
+                        Размер карточки
+                    </label>
 
+                    <select id="cardSize">
 
-<select id="cardSize">
+                        <option value="3">
+                            3 × 3
+                        </option>
 
-<option value="3">
-3 × 3
-</option>
+                        <option value="4">
+                            4 × 4
+                        </option>
 
-<option value="4">
-4 × 4
-</option>
+                        <option value="5">
+                            5 × 5
+                        </option>
 
-<option value="5">
-5 × 5
-</option>
+                    </select>
 
-
-</select>
-
-</div>
-
+                </div>
 
 
+                <!-- Количество карточек -->
 
-<div class="form-group">
+                <div class="form-group">
 
+                    <label for="cardCount">
+                        Количество карточек
+                    </label>
 
-<label>
-Количество карточек
-</label>
+                    <input
+                        id="cardCount"
+                        type="number"
+                        value="10"
+                        min="1"
+                        max="100"
+                    >
 
-
-<input 
-id="cardCount"
-type="number"
-value="10"
-min="1"
-max="100"
->
-
-
-</div>
+                </div>
 
 
+                <!-- Список песен -->
 
+                <div class="form-group">
 
+                    <label for="songInput">
+                        Список песен
+                    </label>
 
-<div class="form-group">
-
-
-<label>
-Список песен
-</label>
-
-
-<textarea 
-id="songInput"
-rows="12"
-placeholder="Введите песни по одной на строку">
-
-EMMA M — Чистые глаза
+                    <textarea
+                        id="songInput"
+                        rows="12"
+                        placeholder="Введите песни по одной на строку"
+                    >EMMA M — Чистые глаза
 Руки Вверх! — Алёшка
 Земляне — Трава у дома
 Король и Шут — Лесник
-Ленинград — Экспонат
+Ленинград — Экспонат</textarea>
 
-</textarea>
+                </div>
 
 
-</div>
+                <!-- Создать карточки -->
 
+                <button
+                    class="btn btn-gold"
+                    id="generateBtn"
+                    type="button"
+                >
+                    ✨ Создать карточки
+                </button>
 
 
+                <br><br>
 
 
-<button 
-class="btn btn-gold"
-id="generateBtn">
+                <!-- Печать -->
 
-✨ Создать карточки
+                <button
+                    class="btn btn-dark"
+                    type="button"
+                    onclick="window.print()"
+                >
+                    🖨 Печать карточек
+                </button>
 
-</button>
 
+                <!-- Список песен -->
 
+                <div
+                    class="song-list"
+                    id="songList"
+                >
+                </div>
 
-<br><br>
+            </div>
 
 
-<button 
-class="btn btn-dark"
-onclick="window.print()">
+            <!-- ===============================
+                 RIGHT PREVIEW
+            ================================ -->
 
-🖨 Печать карточек
+            <div class="preview">
 
-</button>
+                <div class="preview-title">
+                    Предпросмотр
+                </div>
 
 
+                <div id="previewCard">
 
+                    <div class="bingo-card">
 
-<div class="song-list" id="songList">
+                        <div class="card-header">
 
-</div>
+                            <h1>
+                                BINGO
+                            </h1>
 
+                            <span>
+                                Music Edition
+                            </span>
 
-</div>
+                        </div>
 
 
+                        <div
+                            class="bingo-grid grid-3"
+                            id="bingoGrid"
+                        >
 
+                            <div class="bingo-cell">
+                                Нажмите создать
+                            </div>
 
+                        </div>
 
+                    </div>
 
+                </div>
 
-<!-- ПРАВАЯ ЧАСТЬ -->
+            </div>
 
+        </div>
 
-<div class="preview">
 
+        <!-- ===============================
+             GENERATED CARDS
+        ================================ -->
 
-<div class="preview-title">
+        <div
+            class="cards-container"
+            id="cardsContainer"
+        >
+        </div>
 
-Предпросмотр
+    </main>
 
-</div>
 
+    <!-- ===============================
+         JAVASCRIPT
+    ================================ -->
 
-
-<div id="previewCard">
-
-
-<div class="bingo-card">
-
-
-<div class="card-header">
-
-<h1>
-BINGO
-</h1>
-
-<span>
-Music Edition
-</span>
-
-</div>
-
-
-
-<div class="bingo-grid grid-3"
-id="bingoGrid">
-
-
-<div class="bingo-cell">
-Нажмите создать
-</div>
-
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
-
-
-
-<div class="cards-container"
-id="cardsContainer">
-
-</div>
-
-
-</div>
-
-
-  
+    <script src="script.js"></script>
 
 </body>
 
