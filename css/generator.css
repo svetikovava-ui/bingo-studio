@@ -347,7 +347,10 @@ input:focus {
 
     font-weight:700;
 
-    transition:.3s;
+    transition:
+    transform .3s ease,
+    box-shadow .3s ease,
+    background .3s ease;
 
 }
 
