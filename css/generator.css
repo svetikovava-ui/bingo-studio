@@ -22,21 +22,17 @@
 }
 
 
-
 /* ===============================
 GLOBAL
 ================================ */
-
 
 *{
 box-sizing:border-box;
 }
 
-
 html{
 scroll-behavior:smooth;
 }
-
 
 body{
 
@@ -52,19 +48,15 @@ transparent 40%
 ),
 var(--bg-dark);
 
-
 font-family:
 Inter,
 Montserrat,
 Arial,
 sans-serif;
 
-
 color:white;
 
 }
-
-
 
 
 button,
@@ -75,7 +67,6 @@ select{
 font-family:inherit;
 
 }
-
 
 
 
@@ -105,7 +96,6 @@ rgba(0,0,0,.7)
 }
 
 
-
 .logo{
 
 display:flex;
@@ -115,7 +105,6 @@ align-items:center;
 gap:15px;
 
 }
-
 
 
 .logo-icon{
@@ -149,7 +138,6 @@ box-shadow:
 }
 
 
-
 .logo-title{
 
 font-size:28px;
@@ -159,14 +147,11 @@ font-weight:800;
 }
 
 
-
 .logo-title span{
 
 color:var(--gold);
 
 }
-
-
 
 
 
@@ -186,7 +171,6 @@ padding:40px 30px;
 }
 
 
-
 .title{
 
 text-align:center;
@@ -200,7 +184,6 @@ margin-bottom:10px;
 }
 
 
-
 .subtitle{
 
 text-align:center;
@@ -212,8 +195,6 @@ font-size:18px;
 margin-bottom:40px;
 
 }
-
-
 
 
 
@@ -237,8 +218,6 @@ align-items:start;
 
 
 
-
-
 /* ===============================
 PANEL
 ================================ */
@@ -253,23 +232,18 @@ linear-gradient(
 #0d0d0d
 );
 
-
 border:
 1px solid var(--border);
-
 
 border-radius:
 var(--radius);
 
-
 padding:30px;
-
 
 box-shadow:
 var(--shadow);
 
 }
-
 
 
 .panel h2{
@@ -281,15 +255,11 @@ color:var(--gold);
 }
 
 
-
-
-
 .form-group{
 
 margin-bottom:25px;
 
 }
-
 
 
 label{
@@ -305,32 +275,22 @@ font-size:14px;
 }
 
 
-
-
 select,
 input,
 textarea{
 
-
 width:100%;
-
 
 padding:14px;
 
-
 background:#080808;
 
-
 border:
-
 1px solid rgba(255,255,255,.15);
-
 
 border-radius:12px;
 
-
 color:white;
-
 
 outline:none;
 
@@ -346,7 +306,6 @@ min-height:220px;
 }
 
 
-
 select:focus,
 input:focus,
 textarea:focus{
@@ -354,7 +313,6 @@ textarea:focus{
 border-color:var(--gold);
 
 }
-
 
 
 
@@ -374,53 +332,39 @@ gap:15px;
 }
 
 
-
 .btn{
-
 
 width:100%;
 
-
 padding:16px;
-
 
 border-radius:14px;
 
-
 border:none;
-
 
 cursor:pointer;
 
-
 font-size:16px;
 
-
 font-weight:700;
-
 
 transition:.3s;
 
 }
 
 
-
 .btn-gold{
 
-
 background:
-
 linear-gradient(
 135deg,
 var(--gold-light),
 var(--gold)
 );
 
-
 color:#111;
 
 }
-
 
 
 .btn-gold:hover{
@@ -428,28 +372,21 @@ color:#111;
 transform:translateY(-3px);
 
 box-shadow:
-0 10px 30px
-rgba(212,175,55,.35);
+0 10px 30px rgba(212,175,55,.35);
 
 }
-
 
 
 .btn-dark{
 
-
 background:#222;
-
 
 color:white;
 
-
 border:
-
 1px solid var(--border);
 
 }
-
 
 
 .btn-dark:hover{
@@ -457,7 +394,6 @@ border:
 background:#333;
 
 }
-
 
 
 
@@ -477,7 +413,6 @@ align-items:center;
 }
 
 
-
 .preview-title{
 
 font-size:24px;
@@ -487,14 +422,6 @@ color:var(--gold);
 margin-bottom:25px;
 
 }
-
-
-
-
-
-/* ===============================
-BINGO CARD
-================================ */
 
 
 .preview-card{
@@ -509,66 +436,27 @@ justify-content:center;
 
 
 
-.bingo-card{
+/* ===============================
+BINGO CARD PREVIEW
+================================ */
 
+
+.preview .bingo-card{
 
 width:min(650px,100%);
 
-
 background:white;
-
 
 color:#111;
 
-
 padding:25px;
-
 
 border-radius:20px;
 
-
 box-shadow:
-
 0 20px 70px rgba(0,0,0,.5);
 
 }
-
-
-
-.card-header{
-
-
-text-align:center;
-
-
-margin-bottom:20px;
-
-}
-
-
-
-.card-header h1{
-
-
-margin:0;
-
-
-font-size:32px;
-
-
-letter-spacing:5px;
-
-}
-
-
-
-.card-header span{
-
-color:#b08a20;
-
-}
-
-
 
 
 
@@ -584,7 +472,6 @@ display:grid;
 gap:10px;
 
 }
-
 
 
 .grid-3{
@@ -612,8 +499,6 @@ repeat(5,1fr);
 
 
 
-
-
 /* ===============================
 CELLS
 ================================ */
@@ -621,50 +506,35 @@ CELLS
 
 .bingo-cell{
 
-
 aspect-ratio:1;
-
 
 display:flex;
 
-
 flex-direction:column;
-
 
 justify-content:center;
 
-
 align-items:center;
-
 
 text-align:center;
 
-
 padding:10px;
 
-
 border:
-
 2px solid #111;
-
 
 font-size:15px;
 
-
 font-weight:700;
 
-
 background:
-
 linear-gradient(
 135deg,
 #fff,
 #f3f3f3
 );
 
-
 }
-
 
 
 .bingo-cell span{
@@ -672,7 +542,6 @@ linear-gradient(
 line-height:1.2;
 
 }
-
 
 
 .cell-number{
@@ -689,32 +558,26 @@ font-weight:900;
 
 
 
-.bingo-cell:hover{
-
-background:#f7e6a8;
-
-}
-
-
-
-
-
 /* ===============================
 GENERATED CARDS
 ================================ */
+
 
 .cards-container{
 
 display:grid;
 
 grid-template-columns:
-repeat(2, 1fr);
+repeat(2,minmax(280px,420px));
 
-gap:20px;
+justify-content:center;
+
+gap:25px;
 
 margin-top:50px;
 
 }
+
 
 
 .card-mini{
@@ -735,6 +598,7 @@ break-inside:avoid;
 }
 
 
+
 .card-mini h3{
 
 text-align:center;
@@ -748,24 +612,29 @@ color:#9c7c19;
 }
 
 
-/* REAL CARD SIZE */
+
+/* generated card */
 
 .card-mini .bingo-card{
 
 width:100%;
 
-aspect-ratio:1 / 1;
+aspect-ratio:1/1;
 
-padding:12px;
+padding:8px;
 
-border-radius:10px;
+background:white;
+
+border-radius:0;
 
 box-shadow:none;
 
 }
 
 
-/* GRID INSIDE CARD */
+
+/* generated grid */
+
 
 .card-mini .bingo-grid{
 
@@ -778,7 +647,9 @@ gap:5px;
 }
 
 
-/* CELLS */
+
+/* generated cells */
+
 
 .card-mini .bingo-cell{
 
@@ -791,10 +662,24 @@ border:1px solid #222;
 }
 
 
+.card-mini .bingo-cell span{
+
+font-size:11px;
+
+line-height:1.1;
+
+overflow-wrap:break-word;
+
+word-break:break-word;
+
+}
+
+
 
 /* ===============================
 PRINT A4
 ================================ */
+
 
 @media print{
 
@@ -808,11 +693,13 @@ margin:10mm;
 }
 
 
+
 body{
 
 background:white;
 
 }
+
 
 
 .header,
@@ -827,6 +714,7 @@ display:none!important;
 }
 
 
+
 .container{
 
 max-width:none;
@@ -836,8 +724,8 @@ padding:0;
 }
 
 
-.cards-container{
 
+.cards-container{
 
 display:grid;
 
@@ -846,14 +734,13 @@ repeat(2,1fr);
 
 gap:10mm;
 
-
 margin:0;
 
 }
 
 
-.card-mini{
 
+.card-mini{
 
 width:100%;
 
@@ -863,10 +750,12 @@ border-radius:0;
 
 box-shadow:none;
 
-
 page-break-inside:avoid;
 
+break-inside:avoid;
+
 }
+
 
 
 .card-mini h3{
@@ -878,8 +767,8 @@ margin-bottom:5px;
 }
 
 
-.card-mini .bingo-card{
 
+.card-mini .bingo-card{
 
 padding:5px;
 
@@ -888,8 +777,8 @@ border:1px solid #000;
 }
 
 
-.card-mini .bingo-cell{
 
+.card-mini .bingo-cell{
 
 font-size:9px;
 
@@ -902,7 +791,6 @@ border:1px solid #000;
 
 
 }
-
 
 
 
@@ -935,6 +823,13 @@ padding:30px 20px;
 }
 
 
+.cards-container{
+
+grid-template-columns:1fr;
+
+}
+
+
 }
 
 
@@ -949,7 +844,6 @@ font-size:32px;
 }
 
 
-
 .logo-title{
 
 font-size:22px;
@@ -957,22 +851,19 @@ font-size:22px;
 }
 
 
-
-.bingo-cell{
-
-font-size:12px;
-
-padding:5px;
-
-}
-
-
-
-.bingo-card{
+.preview .bingo-card{
 
 padding:15px;
 
 }
+
+
+.card-mini .bingo-cell{
+
+font-size:11px;
+
+}
+
 
 
 }
