@@ -1,4 +1,8 @@
+console.log("BINGO SCRIPT LOADED");
+
 document.addEventListener("DOMContentLoaded", () => {
+
+console.log("DOM READY");
 
 
 /* ===============================
