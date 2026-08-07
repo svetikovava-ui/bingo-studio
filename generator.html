@@ -18,22 +18,13 @@
 <body>
 
 
-<!-- ===============================
-     HEADER
-================================ -->
+<!-- HEADER -->
 
-<header class="header no-print">
+<header class="header">
 
     <div class="logo">
 
-        <div class="logo-icon">
-            B
-        </div>
-
-
-        <div class="logo-title">
-            Bingo <span>Studio</span>
-        </div>
+        <h1>Bingo Studio</h1>
 
     </div>
 
@@ -41,415 +32,111 @@
 
 
 
+<!-- MAIN -->
 
+<main class="generator-container">
 
-<!-- ===============================
-     MAIN
-================================ -->
 
+    <!-- ЛЕВАЯ ПАНЕЛЬ НАСТРОЕК -->
 
-<main class="container">
+    <section class="settings-panel">
 
 
+        <h2>Настройки игры</h2>
 
-<h1 class="title no-print">
 
-    Генератор Bingo карточек
+        <label>
+            Название игры
+        </label>
 
-</h1>
+        <input 
+        type="text" 
+        id="gameTitle"
+        value="Music Edition">
 
 
 
-<p class="subtitle no-print">
+        <label>
+            Количество карточек
+        </label>
 
-    Создавайте уникальные карточки для музыкального бинго
+        <input 
+        type="number" 
+        id="cardCount"
+        value="10"
+        min="1">
 
-</p>
 
 
+        <label>
+            Размер карточки
+        </label>
 
+        <select id="gridSize">
 
+            <option value="3">
+                3 x 3
+            </option>
 
-<!-- ===============================
-     GENERATOR
-================================ -->
+            <option value="4">
+                4 x 4
+            </option>
 
+            <option value="5">
+                5 x 5
+            </option>
 
-<div class="generator-layout">
+        </select>
 
 
 
+        <label>
+            Список элементов
+        </label>
 
+        <textarea 
+        id="itemsList"
+        placeholder="Введите слова или песни, каждое с новой строки"></textarea>
 
-<!-- ===============================
-     SETTINGS PANEL
-================================ -->
 
 
-<section class="panel no-print">
+        <button 
+        id="createCards"
+        class="create-button">
 
+            Создать карточки
 
-<h2>
-⚙ Настройки игры
-</h2>
+        </button>
 
 
+    </section>
 
 
-<div class="form-group">
 
 
-<label for="cardSize">
 
-Размер карточки
+    <!-- ПРАВАЯ ПАНЕЛЬ ПРЕДПРОСМОТРА -->
 
-</label>
+    <section class="preview-panel">
 
 
+        <h2>
+            Созданные карточки
+        </h2>
 
-<select id="cardSize">
 
 
-<option value="3">
+        <div 
+        id="bingoGrid"
+        class="cards-preview">
 
-3 × 3
 
-</option>
+            <!-- Здесь появятся карточки -->
 
+        </div>
 
-<option value="4">
 
-4 × 4
-
-</option>
-
-
-<option value="5">
-
-5 × 5
-
-</option>
-
-
-</select>
-
-
-</div>
-
-
-
-
-
-
-<div class="form-group">
-
-
-<label for="printFormat">
-
-Формат печати
-
-</label>
-
-
-<select id="printFormat">
-
-
-<option value="A5">
-
-A5 — большая карточка
-
-</option>
-
-
-<option value="A4">
-
-A4 — 2 карточки на лист
-
-</option>
-
-
-</select>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="form-group">
-
-
-<label for="cardCount">
-
-Количество карточек
-
-</label>
-
-
-
-<input
-
-id="cardCount"
-
-type="number"
-
-value="10"
-
-min="1"
-
-max="200"
-
-/>
-
-
-
-</div>
-
-
-
-
-
-
-
-<div class="form-group">
-
-
-<label for="songInput">
-
-Список песен
-
-</label>
-
-
-
-<textarea
-
-id="songInput"
-
-rows="15"
-
-placeholder="Введите песни по одной на строку"
-
->
-
-ABBA — Mamma Mia
-Руки Вверх — Алёшка
-Земляне — Трава у дома
-Queen — We Will Rock You
-Король и Шут — Лесник
-Ленинград — Экспонат
-Madonna — Like a Prayer
-Roxette — Listen To Your Heart
-
-</textarea>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="buttons">
-
-
-<button
-
-class="btn btn-gold"
-
-id="generateBtn"
-
-type="button"
-
->
-
-✨ Создать карточки
-
-</button>
-
-
-
-
-
-<button
-
-class="btn btn-dark"
-
-id="printBtn"
-
-type="button"
-
->
-
-🖨 Печать
-
-</button>
-
-
-
-
-
-
-<button
-
-class="btn btn-dark"
-
-id="pdfBtn"
-
-type="button"
-
->
-
-📄 PDF
-
-</button>
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-<!-- ===============================
-     PREVIEW
-================================ -->
-
-
-<section class="preview no-print">
-
-
-<div class="preview-title">
-
-Предпросмотр
-
-</div>
-
-
-
-
-
-<div
-
-id="previewCard"
-
-class="preview-card"
-
->
-
-
-<div class="bingo-card">
-
-
-
-
-
-<div class="card-header">
-
-
-<h1>
-
-BINGO
-
-</h1>
-
-
-<span>
-
-Music Edition
-
-</span>
-
-
-
-</div>
-
-
-
-
-
-
-
-<div
-
-class="bingo-grid grid-3"
-
-id="bingoGrid"
-
->
-
-
-
-<div class="bingo-cell">
-
-
-Нажмите создать
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- ===============================
-     GENERATED CARDS
-================================ -->
-
-
-<section
-
-class="cards-container"
-
-id="cardsContainer"
-
->
-
-
-
-</section>
-
-
+    </section>
 
 
 
@@ -458,21 +145,9 @@ id="cardsContainer"
 
 
 
-
-
-
-
-
-<!-- ===============================
-     JAVASCRIPT
-================================ -->
-
-
 <script src="js/generator.js"></script>
 
 
-
 </body>
-
 
 </html>
