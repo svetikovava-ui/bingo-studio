@@ -100,12 +100,11 @@ color:var(--gold);
 
 
 /* ===============================
-MAIN LAYOUT
+LAYOUT
 ================================ */
 
 
 .generator-container{
-
 
 max-width:1500px;
 
@@ -113,30 +112,26 @@ margin:auto;
 
 padding:40px;
 
-
 display:grid;
 
 grid-template-columns:
 360px 1fr;
 
-
 gap:35px;
 
 align-items:start;
-
 
 }
 
 
 
 /* ===============================
-LEFT SETTINGS
+PANELS
 ================================ */
 
 
 .settings-panel,
 .preview-panel{
-
 
 background:
 linear-gradient(
@@ -145,21 +140,16 @@ linear-gradient(
 #0d0d0d
 );
 
-
 border:
 1px solid var(--border);
-
 
 border-radius:
 var(--radius);
 
-
 padding:30px;
-
 
 box-shadow:
 var(--shadow);
-
 
 }
 
@@ -168,19 +158,19 @@ var(--shadow);
 .settings-panel h2,
 .preview-panel h2{
 
-
 margin-top:0;
 
 color:var(--gold);
 
 font-size:24px;
 
-
 }
 
 
 
-/* FORM */
+/* ===============================
+FORM
+================================ */
 
 
 label{
@@ -201,7 +191,6 @@ input,
 textarea,
 select{
 
-
 width:100%;
 
 padding:14px;
@@ -211,9 +200,7 @@ background:#080808;
 color:white;
 
 border:
-
 1px solid rgba(255,255,255,.15);
-
 
 border-radius:12px;
 
@@ -231,11 +218,12 @@ resize:vertical;
 
 
 
-/* BUTTON */
+/* ===============================
+BUTTON
+================================ */
 
 
 .create-button{
-
 
 margin-top:25px;
 
@@ -243,11 +231,9 @@ width:100%;
 
 padding:16px;
 
-
 border:none;
 
 border-radius:14px;
-
 
 background:
 linear-gradient(
@@ -256,20 +242,15 @@ var(--gold-light),
 var(--gold)
 );
 
-
 font-size:16px;
 
 font-weight:800;
 
-
 cursor:pointer;
-
 
 color:#111;
 
-
 transition:.3s;
-
 
 }
 
@@ -277,28 +258,23 @@ transition:.3s;
 
 .create-button:hover{
 
-
 transform:translateY(-3px);
-
 
 box-shadow:
 0 10px 30px rgba(212,175,55,.35);
-
 
 }
 
 
 
 /* ===============================
-PREVIEW AREA
+PREVIEW
 ================================ */
 
 
 .preview-panel{
 
-
 min-height:600px;
-
 
 }
 
@@ -306,43 +282,34 @@ min-height:600px;
 
 .cards-preview{
 
-
 display:grid;
 
-
 grid-template-columns:
-repeat(auto-fill,minmax(280px,1fr));
+repeat(auto-fill,minmax(300px,1fr));
 
-
-gap:25px;
-
+gap:30px;
 
 }
 
 
 
 /* ===============================
-CARDS
+CARD
 ================================ */
 
 
 .print-card{
 
-
 background:white;
 
 color:#111;
 
+padding:18px;
 
-padding:15px;
-
-
-border-radius:12px;
-
+border-radius:14px;
 
 box-shadow:
 0 10px 30px rgba(0,0,0,.25);
-
 
 }
 
@@ -350,40 +317,29 @@ box-shadow:
 
 .card-title{
 
-
 text-align:center;
 
 margin:
-0 0 10px;
-
+0 0 15px;
 
 font-size:18px;
 
-
 font-weight:800;
 
-
 color:#9c7c19;
-
 
 }
 
 
 
-/* CARD */
+/* ===============================
+BINGO GRID
+================================ */
 
 
 .bingo-card{
 
-
 width:100%;
-
-
-background:white;
-
-
-padding:10px;
-
 
 }
 
@@ -391,11 +347,9 @@ padding:10px;
 
 .bingo-grid{
 
-
 display:grid;
 
 gap:6px;
-
 
 }
 
@@ -409,12 +363,14 @@ repeat(3,1fr);
 }
 
 
+
 .grid-4{
 
 grid-template-columns:
 repeat(4,1fr);
 
 }
+
 
 
 .grid-5{
@@ -426,47 +382,40 @@ repeat(5,1fr);
 
 
 
-/* CELLS */
+/* ===============================
+CELLS
+================================ */
 
 
 .bingo-cell{
 
-
 aspect-ratio:1;
-
 
 display:flex;
 
-
 flex-direction:column;
-
 
 justify-content:center;
 
-
 align-items:center;
-
 
 text-align:center;
 
-
 padding:8px;
 
+overflow:hidden;
 
 border:
 1px solid #222;
 
-
 background:
 linear-gradient(
 135deg,
-#fff,
-#f3f3f3
+#ffffff,
+#eeeeee
 );
 
-
 font-weight:700;
-
 
 }
 
@@ -474,15 +423,11 @@ font-weight:700;
 
 .cell-number{
 
-
 font-size:10px;
-
 
 color:#b08a20;
 
-
 margin-bottom:5px;
-
 
 }
 
@@ -490,15 +435,13 @@ margin-bottom:5px;
 
 .song-title{
 
-
 font-size:12px;
-
 
 line-height:1.2;
 
+max-width:100%;
 
-word-break:break-word;
-
+overflow-wrap:anywhere;
 
 }
 
@@ -516,9 +459,7 @@ PRINT
 .settings-panel,
 .preview-panel h2{
 
-
 display:none!important;
-
 
 }
 
@@ -534,11 +475,9 @@ background:white;
 
 .generator-container{
 
-
 display:block;
 
 padding:0;
-
 
 }
 
@@ -546,15 +485,12 @@ padding:0;
 
 .cards-preview{
 
-
 display:grid;
 
 grid-template-columns:
 repeat(2,1fr);
 
-
 gap:10mm;
-
 
 }
 
@@ -562,15 +498,11 @@ gap:10mm;
 
 .print-card{
 
-
 box-shadow:none;
 
 page-break-inside:avoid;
 
-
 }
-
-
 
 }
 
@@ -586,12 +518,9 @@ MOBILE
 
 .generator-container{
 
-
 grid-template-columns:1fr;
 
-
 padding:20px;
-
 
 }
 
@@ -599,9 +528,7 @@ padding:20px;
 
 .cards-preview{
 
-
 grid-template-columns:1fr;
-
 
 }
 
