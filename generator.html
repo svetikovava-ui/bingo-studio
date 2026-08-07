@@ -22,13 +22,14 @@
      HEADER
 ================================ -->
 
-<header class="header">
+<header class="header no-print">
 
     <div class="logo">
 
         <div class="logo-icon">
             B
         </div>
+
 
         <div class="logo-title">
             Bingo <span>Studio</span>
@@ -40,21 +41,32 @@
 
 
 
+
+
 <!-- ===============================
      MAIN
 ================================ -->
 
+
 <main class="container">
 
 
-<h1 class="title">
+
+<h1 class="title no-print">
+
     Генератор Bingo карточек
+
 </h1>
 
 
-<p class="subtitle">
+
+<p class="subtitle no-print">
+
     Создавайте уникальные карточки для музыкального бинго
+
 </p>
+
+
 
 
 
@@ -64,6 +76,8 @@
 
 
 <div class="generator-layout">
+
+
 
 
 
@@ -81,33 +95,86 @@
 
 
 
+
 <div class="form-group">
 
+
 <label for="cardSize">
+
 Размер карточки
+
 </label>
+
 
 
 <select id="cardSize">
 
+
 <option value="3">
+
 3 × 3
+
 </option>
 
 
 <option value="4">
+
 4 × 4
+
 </option>
 
 
 <option value="5">
+
 5 × 5
+
 </option>
 
 
 </select>
 
+
 </div>
+
+
+
+
+
+
+<div class="form-group">
+
+
+<label for="printFormat">
+
+Формат печати
+
+</label>
+
+
+<select id="printFormat">
+
+
+<option value="A5">
+
+A5 — большая карточка
+
+</option>
+
+
+<option value="A4">
+
+A4 — 2 карточки на лист
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
 
 
 
@@ -116,20 +183,32 @@
 
 
 <label for="cardCount">
+
 Количество карточек
+
 </label>
 
 
+
 <input
+
 id="cardCount"
+
 type="number"
+
 value="10"
+
 min="1"
+
 max="200"
+
 />
 
 
+
 </div>
+
+
 
 
 
@@ -139,17 +218,22 @@ max="200"
 
 
 <label for="songInput">
+
 Список песен
+
 </label>
 
 
 
 <textarea
-id="songInput"
-rows="15"
-placeholder="Введите песни по одной на строку"
->
 
+id="songInput"
+
+rows="15"
+
+placeholder="Введите песни по одной на строку"
+
+>
 
 ABBA — Mamma Mia
 Руки Вверх — Алёшка
@@ -163,7 +247,12 @@ Roxette — Listen To Your Heart
 </textarea>
 
 
+
 </div>
+
+
+
+
 
 
 
@@ -172,9 +261,13 @@ Roxette — Listen To Your Heart
 
 
 <button
+
 class="btn btn-gold"
+
 id="generateBtn"
+
 type="button"
+
 >
 
 ✨ Создать карточки
@@ -183,10 +276,16 @@ type="button"
 
 
 
+
+
 <button
+
 class="btn btn-dark"
+
 id="printBtn"
+
 type="button"
+
 >
 
 🖨 Печать
@@ -195,10 +294,17 @@ type="button"
 
 
 
+
+
+
 <button
+
 class="btn btn-dark"
+
 id="pdfBtn"
+
 type="button"
+
 >
 
 📄 PDF
@@ -206,11 +312,13 @@ type="button"
 </button>
 
 
+
 </div>
 
 
 
 </section>
+
 
 
 
@@ -222,7 +330,7 @@ type="button"
 ================================ -->
 
 
-<section class="preview">
+<section class="preview no-print">
 
 
 <div class="preview-title">
@@ -234,14 +342,19 @@ type="button"
 
 
 
+
 <div
+
 id="previewCard"
+
 class="preview-card"
+
 >
 
 
-
 <div class="bingo-card">
+
+
 
 
 
@@ -249,33 +362,43 @@ class="preview-card"
 
 
 <h1>
+
 BINGO
+
 </h1>
 
 
 <span>
+
 Music Edition
+
 </span>
 
 
+
 </div>
+
+
 
 
 
 
 
 <div
+
 class="bingo-grid grid-3"
+
 id="bingoGrid"
+
 >
+
 
 
 <div class="bingo-cell">
 
+
 Нажмите создать
 
-</div>
-
 
 </div>
 
@@ -285,8 +408,12 @@ id="bingoGrid"
 
 
 
+
+
 </div>
 
+
+</div>
 
 
 </section>
@@ -294,7 +421,12 @@ id="bingoGrid"
 
 
 
+
 </div>
+
+
+
+
 
 
 
@@ -306,9 +438,13 @@ id="bingoGrid"
 
 
 <section
+
 class="cards-container"
+
 id="cardsContainer"
+
 >
+
 
 
 </section>
@@ -317,8 +453,10 @@ id="cardsContainer"
 
 
 
-
 </main>
+
+
+
 
 
 
@@ -333,6 +471,8 @@ id="cardsContainer"
 <script src="js/generator.js"></script>
 
 
+
 </body>
+
 
 </html>
