@@ -17,8 +17,8 @@ const generateBtn =
 document.getElementById("generateBtn");
 
 
-const cardsContainer =
-document.getElementById("cardsContainer");
+const bingoGrid =
+document.getElementById("bingoGrid");
 
 
 const songsInput =
@@ -47,7 +47,6 @@ const MAX_CARDS = 200;
 
 
 let generatedCards = new Set();
-
 
 
 
@@ -87,25 +86,23 @@ function shuffle(array){
 
 
 
-
 /* ===============================
-   CREATE UNIQUE CARD KEY
+   CARD UNIQUE KEY
 ================================ */
 
 
 function cardKey(items){
 
     return [...items]
-        .sort()
-        .join("|");
+    .sort()
+    .join("|");
 
 }
 
 
 
-
 /* ===============================
-   GENERATE CARD DATA
+   GENERATE ITEMS
 ================================ */
 
 
@@ -142,12 +139,10 @@ function generateCardItems(items,size){
 
             return selected;
 
-
         }
 
 
         attempts++;
-
 
     }
 
@@ -162,28 +157,26 @@ function generateCardItems(items,size){
 
 
 
-
 /* ===============================
-   CREATE HTML CARD
+   CREATE CARD HTML
 ================================ */
 
 
 function createCard(
-    items,
-    size,
-    number,
-    format
+items,
+size,
+number,
+format
 ){
-
 
 
     let wrapper =
     document.createElement("div");
 
 
-    wrapper.className =
-    `print-card ${format} page-break`;
 
+    wrapper.className =
+    `print-card ${format}`;
 
 
 
@@ -191,12 +184,15 @@ function createCard(
     document.createElement("h3");
 
 
+
     title.className =
     "card-title";
 
 
+
     title.textContent =
     `BINGO № ${number}`;
+
 
 
 
@@ -209,7 +205,6 @@ function createCard(
 
 
 
-
     let grid =
     document.createElement("div");
 
@@ -217,7 +212,6 @@ function createCard(
 
     grid.className =
     `bingo-grid grid-${size}`;
-
 
 
 
@@ -237,20 +231,13 @@ function createCard(
 
         cell.innerHTML = `
 
-
             <div class="cell-number">
-
                 ${String(index+1).padStart(2,"0")}
-
             </div>
-
 
             <div class="song-title">
-
                 ${song}
-
             </div>
-
 
         `;
 
@@ -263,13 +250,10 @@ function createCard(
 
 
 
-
     card.appendChild(grid);
 
 
-
     wrapper.appendChild(title);
-
 
 
     wrapper.appendChild(card);
@@ -279,9 +263,7 @@ function createCard(
     return wrapper;
 
 
-
 }
-
 
 
 
@@ -295,18 +277,14 @@ function createCard(
 function createCards(){
 
 
-
 console.log("CREATE START");
 
 
 
-cardsContainer.innerHTML = "";
-
+bingoGrid.innerHTML = "";
 
 
 generatedCards.clear();
-
-
 
 
 
@@ -318,21 +296,18 @@ songsInput.value
 
 
 
-
 if(!songs.length){
 
 
-    alert(
-        "Добавьте список песен"
-    );
+alert(
+"Добавьте список песен"
+);
 
 
-    return;
+return;
 
 
 }
-
-
 
 
 
@@ -354,29 +329,23 @@ printFormat.value :
 
 
 
-
-
 let needed =
 size * size;
-
-
 
 
 
 if(count > MAX_CARDS){
 
 
-    alert(
-        `Максимум ${MAX_CARDS} карточек`
-    );
+alert(
+`Максимум ${MAX_CARDS} карточек`
+);
 
 
-    return;
+return;
 
 
 }
-
-
 
 
 
@@ -384,12 +353,12 @@ if(count > MAX_CARDS){
 if(songs.length < needed){
 
 
-    alert(
-        `Для карточки ${size}×${size} нужно минимум ${needed} песен`
-    );
+alert(
+`Для карточки ${size}×${size} нужно минимум ${needed} песен`
+);
 
 
-    return;
+return;
 
 
 }
@@ -397,38 +366,32 @@ if(songs.length < needed){
 
 
 
-
-
-
 for(
-    let i = 1;
-    i <= count;
-    i++
+let i = 1;
+i <= count;
+i++
 ){
 
 
-
-    let items =
-    generateCardItems(
-        songs,
-        size
-    );
-
+let items =
+generateCardItems(
+songs,
+size
+);
 
 
 
-    let card =
-    createCard(
-        items,
-        size,
-        i,
-        format
-    );
+let card =
+createCard(
+items,
+size,
+i,
+format
+);
 
 
 
-    cardsContainer.appendChild(card);
-
+bingoGrid.appendChild(card);
 
 
 }
@@ -438,10 +401,7 @@ for(
 console.log("CARDS CREATED");
 
 
-
 }
-
-
 
 
 
@@ -454,34 +414,24 @@ console.log("CARDS CREATED");
 
 function printCards(){
 
-
-    window.print();
-
+window.print();
 
 }
 
 
 
-
-
-
 /* ===============================
-   PDF PREPARATION
+   PDF
 ================================ */
 
 
 function preparePDF(){
 
-
-    alert(
-        "PDF экспорт будет подключён следующим этапом"
-    );
-
+alert(
+"PDF экспорт будет подключён следующим этапом"
+);
 
 }
-
-
-
 
 
 
@@ -490,14 +440,14 @@ function preparePDF(){
 ================================ */
 
 
+if(generateBtn){
 
 generateBtn.addEventListener(
 "click",
 createCards
 );
 
-
-
+}
 
 
 
@@ -505,19 +455,14 @@ const printBtn =
 document.getElementById("printBtn");
 
 
-
 if(printBtn){
 
-
-    printBtn.addEventListener(
-        "click",
-        printCards
-    );
-
+printBtn.addEventListener(
+"click",
+printCards
+);
 
 }
-
-
 
 
 
@@ -525,18 +470,14 @@ const pdfBtn =
 document.getElementById("pdfBtn");
 
 
-
 if(pdfBtn){
 
-
-    pdfBtn.addEventListener(
-        "click",
-        preparePDF
-    );
-
+pdfBtn.addEventListener(
+"click",
+preparePDF
+);
 
 }
-
 
 
 
