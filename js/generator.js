@@ -213,10 +213,15 @@ function createCard(items,size,number){
 
 function createCards(){
 
+    console.log("1. CREATE START");
 
     cardsContainer.innerHTML = "";
 
+    console.log("2. CONTAINER OK");
+
     generatedCards.clear();
+
+    console.log("3. SET CLEAR OK");
 
 
 
